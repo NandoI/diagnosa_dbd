@@ -3,6 +3,8 @@ import logo from '../assets/logo1.png';
 import { IoIosArrowDown } from "react-icons/io";
 import { FaUserDoctor } from "react-icons/fa6";
 import { FaDiagnoses } from "react-icons/fa";
+import { BiLogoGmail } from "react-icons/bi";
+import { FaWhatsapp } from "react-icons/fa";
 
 const Header = () => {
   const [navOpen, setNavOpen] = useState(false);
@@ -14,7 +16,6 @@ const Header = () => {
     setNavOpen(!navOpen);
   };
 
-  // Submenu mouse enter
   const handleMouseEnter = () => {
     if (submenuTimeout) {
       clearTimeout(submenuTimeout);
@@ -22,7 +23,6 @@ const Header = () => {
     setIsServiceHovered(true);
   };
 
-  // Submenu mouse leave
   const handleMouseLeave = () => {
     const timeout = setTimeout(() => {
       setIsServiceHovered(false);
@@ -64,9 +64,9 @@ const Header = () => {
               />
             </a>
 
-            {/* Submenu */}
+            {/* Submenu Services */}
             {isServiceHovered && (
-              <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md transition-opacity duration-300 ease-in-out opacity-100 p-4">
+              <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md transition-opacity duration-300 ease-in-out opacity-100 p-4 z-10">
                 <div className="space-y-2 text-left">
                   <span className='text-gray-500'>our service</span>
                   <a 
@@ -88,7 +88,7 @@ const Header = () => {
             )}
           </div>
 
-          {/* Contact and Diagnosis Button */}
+        {/* Contact and Diagnosis Button */}
           <div className='flex items-center space-x-4'>
             <div className='relative'
               onMouseEnter={() => setIsContactHoverd(true)}
@@ -102,6 +102,29 @@ const Header = () => {
                   }`} 
                 />
               </a>
+
+              {/* Submenu Contact */}
+              {isContactHovered && (
+                <div className='absolute top-full left-0 mt-1 w-64 bg-white shadow-lg rounded-md transition-opacity duration-300 ease-in-out opacity-100 p-4 z-10'>
+                  <div className='space-y-2 text-left'>
+                    <span className='text-gray-500'>Our contact</span>
+                    <a 
+                      href="/gmail"
+                      className='flex items-center px-4 py-2 text-dark-rose hover:bg-gray-100 transition-colors duration-300'
+                    >
+                      <span className='mr-3'><BiLogoGmail/></span>
+                      Gmail
+                    </a>
+                    <a 
+                    href="whatapp"
+                    className="flex items-center px-4 py-2 text-dark-rose hover:bg-gray-100 transition-colors duration-300"
+                    >
+                      <span className='mr-3'><FaWhatsapp/></span>
+                      089652895078
+                    </a>
+                  </div>
+                </div>
+              )}
             </div>
             <a href="/diagnosis">
               <button className="bg-dark-blue text-white px-4 py-2 rounded hover:bg-blue-300 transition-colors duration-300">
