@@ -34,17 +34,19 @@ const Header = () => {
     <header className="bg-light-green md:px-12 lg:px-28 md:shadow-sm">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
-        <div className="flex-shrink-0">
+        <div className="flex items-center">
           <img 
             src={logo}
             alt="Logo" 
             className="w-24 h-auto object-contain"
           />
+          <span className='font-Lora text-xl'>Diagnosis <span className='text-dark-rose'>DBD</span></span>
+          
         </div>
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex space-x-8 px-6 items-center">
-          <a href="/about" className="text-dark-rose hover:underline">About us</a>
+          <a href="/about" className="text-black hover:underline">About us</a>
 
           {/* Services with Arrow Icon */}
           <div 
@@ -54,7 +56,7 @@ const Header = () => {
           >
             <a
               href="/services"
-              className="text-dark-rose hover:underline flex items-center"
+              className="text-black hover:underline flex items-center"
             >
               Services
               <IoIosArrowDown
@@ -94,7 +96,7 @@ const Header = () => {
               onMouseEnter={() => setIsContactHoverd(true)}
               onMouseLeave={() => setIsContactHoverd(false)}
             >
-              <a href="/contact" className="text-dark-rose hover:underline flex items-center">
+              <a href="/contact" className="text-black hover:underline flex items-center">
                 Contact
                 <IoIosArrowDown 
                   className={`ml-1 transition-transform duration-300 ${
@@ -113,7 +115,7 @@ const Header = () => {
                       className='flex items-center px-4 py-2 text-dark-rose hover:bg-gray-100 transition-colors duration-300'
                     >
                       <span className='mr-3'><BiLogoGmail/></span>
-                      Gmail
+                      nandolop71@gmail.com
                     </a>
                     <a 
                     href="whatapp"
