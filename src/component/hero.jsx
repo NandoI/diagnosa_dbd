@@ -34,20 +34,25 @@ const Hero = () => {
             >
               {words[currentWordIndex]}
             </span>
-            <ul className="text-base leading-relaxed my-6">
+            <ul className="text-base leading-relaxed my-6 font-Inter">
               <li>✓ Analyze your symptoms</li>
               <li>✓ Understand your health</li>
               <li>✓ Plan your next steps</li>
               <li>✓ Get ready for your visit</li>
             </ul>
           </span>
+          <a href="/diagnosis">
+            <button className="px-8 py-2 rounded-md bg-dark-blue text-white font-Inter">
+              Diagnosis
+            </button>
+          </a>
           <img src={hero} alt="Hero" className="pt-10 h-auto w-3/4 mx-auto" />
         </div>
       </div>
       {/* md screen */}
-      <div className=" md:text-5xl borde">
+      <div className=" md:text-4xl">
         <div className="hidden md:grid lg:flex lg:items-center lg:px-2">
-          <div className="font-Lora tracking-wide lg:mr-8 border border-black">
+          <div className="font-Lora tracking-wide lg:mr-8 ">
             <span>The symptom checker made by doctors for</span>
             <br />
             <span
@@ -59,18 +64,23 @@ const Hero = () => {
             >
               {words[currentWordIndex]}
             </span>
-            <ul className="text-lg leading-relaxed my-6">
+            <ul className="text-lg leading-relaxed my-6 font-Inter">
               <li>✓ Analyze your symptoms</li>
               <li>✓ Understand your health</li>
               <li>✓ Plan your next steps</li>
               <li>✓ Get ready for your visit</li>
             </ul>
+            <a href="/diagnosis">
+              <button className="px-10 py-3 rounded-md bg-dark-blue text-white text-lg font-Inter hover:bg-blue-300 transition-colors duration-300">
+                Diagnosis
+              </button>
+            </a>
           </div>
           <div className="mt-4 lg:mt-0">
             <img
               src={hero}
               alt=""
-              className="w-2/3 h-auto lg:h-auto md:mx-auto lg:mx mb-6 object-cover border border-black"
+              className="w-2/3 h-auto lg:h-auto md:mx-auto mb-10 object-cover"
             />
           </div>
         </div>

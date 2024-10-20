@@ -40,7 +40,7 @@ const Header = () => {
             alt="Logo" 
             className="w-24 h-auto object-contain"
           />
-          <span className='font-Lora text-xl'>Diagnosis <span className='text-dark-rose'>DBD</span></span>
+          <span className='font-Inter text-xl'>Diagnosis <span className='text-dark-rose'>DBD</span></span>
           
         </div>
 

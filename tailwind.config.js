@@ -14,7 +14,8 @@ export default {
       },
       fontFamily:{
        Italiana: ["Italiana", "serif"],
-       Lora: ["Lora", "serif"]
+       Lora: ["Lora", "serif"],
+       Inter: ["Inter", "sans-serif"]
       }
     },
   },
