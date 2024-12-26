@@ -1,7 +1,14 @@
 import React, { useState } from "react";
+import axios from "axios"; // Import axios
+import { useDispatch, useSelector } from "react-redux";
 import logo from "../assets/logo1.png";
+import { API_URL } from "../../conn"; // Pastikan API_URL terdefinisi
+import { registerUser } from "../redux/reducers/authThunk";
 
 const Register = () => {
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.auth); // Ambil state dari Redux
+
   const [formData, setFormData] = useState({
     nama: "",
     email: "",
@@ -27,21 +34,41 @@ const Register = () => {
     setDetailData({ ...detailData, [name]: value });
   };
 
-  const handleRegisterSubmit = (e) => {
+  const handleRegisterSubmit = async (e) => {
     e.preventDefault();
-    // Simpan data register ke backend
-    console.log("Register Data:", formData);
-    // Pindah ke form detail pengguna
-    setIsDetailForm(true);
+    try {
+      // Dispatch Redux action untuk register user
+      await dispatch(registerUser(formData));
+      setIsDetailForm(true); // Pindah ke form detail pasien
+    } catch (error) {
+      console.error("Register Error:", error.message);
+    }
   };
 
-  const handleDetailSubmit = (e) => {
+  const handleDetailSubmit = async (e) => {
     e.preventDefault();
-    // Simpan data detail pengguna ke backend
-    console.log("Detail Data:", detailData);
-    // Tampilkan pesan sukses atau navigasi ke halaman lain
-    alert("Registration and detail submission successful!");
+    try {
+      // Ambil userId dari localStorage
+      const userId = localStorage.getItem("userId");
+  
+      if (!userId) {
+        throw new Error("User ID tidak ditemukan. Coba register ulang.");
+      }
+  
+      // Kirim data pasien ke backend
+      const response = await axios.post(`${API_URL}pasiens/create`, {
+        userId,
+        ...detailData, // Gunakan detailData sebagai body request
+      });
+  
+      console.log("Patient details submitted:", response.data);
+      alert("Detail pasien berhasil dikirim!");
+    } catch (error) {
+      console.error("Error submitting patient details:", error.message);
+      alert("Gagal mengirim detail pasien. Coba lagi.");
+    }
   };
+  
 
   return (
     <div className="min-h-screen bg-white flex justify-center items-center">
@@ -115,9 +142,11 @@ const Register = () => {
             <button
               type="submit"
               className="w-full bg-gray-500 text-white py-2 rounded-md hover:bg-rose-600 transition"
+              disabled={loading}
             >
-              Sign Up
+              {loading ? "Processing..." : "Sign Up"}
             </button>
+            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
           </form>
         ) : (
           <form onSubmit={handleDetailSubmit} className="space-y-4">
