@@ -128,9 +128,9 @@ const Header = () => {
                 </div>
               )}
             </div>
-            <a href="/diagnosis">
+            <a href="/Register">
               <button className="bg-dark-blue text-white px-4 py-2 rounded hover:bg-blue-300 transition-colors duration-300">
-                Diagnosis
+                Register
               </button>
             </a>
           </div>
