@@ -6,11 +6,12 @@ import Routers from "../routes/Routes";
 
 const Layout = () => {
     const location = useLocation();
-    const isRegisterPage = location.pathname === "/Register";
+    const isRegisterPage = location.pathname === "/register";
+    const isLoginPage = location.pathname === "/login";
 
     return (
         <>
-            {!isRegisterPage && <Header />}
+            {!isRegisterPage && !isLoginPage && <Header />}
             <main>
                 <Routers />
             </main>

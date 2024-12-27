@@ -4,10 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import logo from "../assets/logo1.png";
 import { API_URL } from "../../conn"; // Pastikan API_URL terdefinisi
 import { registerUser } from "../redux/reducers/authThunk";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state.auth); // Ambil state dari Redux
+  const { loading, error } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     nama: "",
@@ -63,6 +65,7 @@ const Register = () => {
   
       console.log("Patient details submitted:", response.data);
       alert("Detail pasien berhasil dikirim!");
+      navigate("/login");
     } catch (error) {
       console.error("Error submitting patient details:", error.message);
       alert("Gagal mengirim detail pasien. Coba lagi.");
